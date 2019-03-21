@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="../../../public/static/css/fonts.css">
 	<script type="text/javascript" src="../../../public/static/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../../../public/static/js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../public/static/js/xlsx.full.min.js"></script>
 </head>
 <body>
 	 <script>
@@ -181,9 +182,14 @@
 
 	</div>
 	<div id="myModal" class="reveal-modal">
-			<h1>上传数据</h1>
-			<button>选择文件</button>
-			<button>上传完成</button>
+			<h1 style="color: white;">上传数据</h1>
+			<div class="message">
+				<form method="post" action="" enctype="multipart/form-data">					
+					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传数据" size="30" onClick="f.click()" class="choose"> -->
+					<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;color: white;" class="finish"  size="1" hidefocus>
+					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='./index/detail.html'" class="choose">
+				</form>
+			</div>
 			<a class="close-reveal-modal">&#215;</a>
 	</div>
 </body>

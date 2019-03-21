@@ -6,6 +6,9 @@
 	<link rel="stylesheet" type="text/css" href="../../../../public/static/css/style.css">
 	<script type="text/javascript" src="../../../../public/static/js/jquery.min.js"></script>
 	<script type="text/javascript" src="../../../../public/static/js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../public/static/js/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=iLjmnwxeFkOjHetOc6LXihRbvl1Kkksi"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
 </head>
 <body>
 	<script>
@@ -114,19 +117,130 @@
 		<div class="meal-center">
 			<span>
 				<!-- <canvas> -->
-					<img src="../../../../public/static/src/luxian.gif">
+					<!-- <img src="../../../../public/static/src/luxian.gif"> -->
 				<!-- </canvas> -->
+				<div id="three_flash" style="z-index: 100;">
+					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+					<div id="container" style="width: 100%;height:400px;"></div>
+					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+					<!-- <div><span id="date" style="color:white;font-size:18px;"></span></div> -->
+					
+
+					<!-- <div class="floatadd">
+							<img src="images/add2.jpg" />
+							<a href="#popup-article" class="card__link card__readmore" title="查看其他类型的图形：扇形图等" >
+					            <div class="mask">					               
+					            </div>
+					        </a>
+					</div> -->
+		  		</div>
 			</span>
 			<span id="add">
 				<a class="big-link" data-reveal-id="myModal" href="#"><img src="../../../../public/static/src/add2.jpg"></a>
 			</span>
 		</div>
 	</div>
-	<div id="myModal" class="reveal-modal">
-			<h1>上传数据</h1>
-			<button>选择文件</button>
-			<button>上传完成</button>
+	<div id="myModal" class="reveal-modal"  style="width: 800px;height: 450px;left:40%;">
+		<div style="text-align: center;line-height: 40px;">
+			<h3 style="color: white;line-height: 60px;margin-top:-30px; ">查看其余图形</h3>
+			<div id="tanchuang1">
+				<img src="../../../../public/static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">	
+				<b></b>	
+				<img src="../../../../public/static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看树状图</button> -->
+				<b></b>	
+				<img src="../../../../public/static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<b></b>	
+				<a href="" data-reveal-id="myModal"><button>上传数据查看饼图</button></a>
+				<a href="" data-reveal-id="myModal"><button>上传数据查看树状散点图</button></a>
+				<a href="" data-reveal-id="myModal"><button>上传数据查看条形图</button></a>
+				<img src="../../../../public/static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<b></b>	
+				<img src="../../../../public/static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看人流量分布</button> -->
+				<b></b>	
+				<img src="../../../../public/static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看建筑物分布</button> -->
+				<b></b>	
+				<a href=""><button>上传数据查看建筑物图</button></a>
+				<a href=""><button>上传数据查看人流量图</button></a>
+				<a href=""><button>上传数据查看能耗分析</button</a>>					  
+			</div>
 			<a class="close-reveal-modal">&#215;</a>
+		</div>
 	</div>
 </body>
+<script type="text/javascript">
+ var testData=JSON.parse(localStorage.getItem('locArr'))
+ var dateArr=JSON.parse(localStorage.getItem('dateArr'))
+				var map = new BMap.Map("container");          // 创建地图实例
+
+				var point = new BMap.Point(120.15, 33.35);
+				map.centerAndZoom(point, 15);             // 初始化地图，设置中心点坐标和地图级别
+				map.enableScrollWheelZoom(); // 允许滚轮缩放
+		
+			if (!isSupportCanvas()) {
+					alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+				}
+				//详细的参数,可以查看heatmap.js的文档 https://github.com/pa7/heatmap.js/blob/master/README.md
+				//参数说明如下:
+				/* visible 热力图是否显示,默认为true
+				 * opacity 热力的透明度,1-100
+				 * radius 势力图的每个点的半径大小
+				 * gradient  {JSON} 热力图的渐变区间 . gradient如下所示
+				 *	{
+				 .2:'rgb(0, 255, 255)',
+				 .5:'rgb(0, 110, 255)',
+				 .8:'rgb(100, 0, 255)'
+				 }
+				 其中 key 表示插值的位置, 0~1.
+				 value 为颜色值.
+				 */
+				heatmapOverlay = new BMapLib.HeatmapOverlay({"radius": 20});
+				map.addOverlay(heatmapOverlay);
+				testData.forEach(function(e,index){
+					var points = [];
+					points.push(e) ;
+					(function (num) {
+						setTimeout(function () {
+							heatmapOverlay.setDataSet({data: points[0], max: 100})
+							console.log(num)
+							//时间戳要添加这句
+							document.getElementById("date").innerText=dateArr[num]
+						},num*500)
+					})(index)
+
+
+				});
+			//    遍历这个随机生成的数组 然后依次展示出来
+
+				//是否显示热力图
+				function openHeatmap() {
+					heatmapOverlay.show();
+				}
+				function closeHeatmap() {
+					heatmapOverlay.hide();
+				}
+				openHeatmap();
+				function setGradient() {
+					/*格式如下所示:
+					 {
+					 0:'rgb(102, 255, 0)',
+					 .5:'rgb(255, 170, 0)',
+					 1:'rgb(255, 0, 0)'
+					 }*/
+					var gradient = {};
+					var colors = document.querySelectorAll("input[type='color']");
+					colors = [].slice.call(colors, 0);
+					colors.forEach(function (ele) {
+						gradient[ele.getAttribute("data-key")] = ele.value;
+					});
+					heatmapOverlay.setOptions({"gradient": gradient});
+				}
+				//判断浏览区是否支持canvas
+				function isSupportCanvas() {
+					var elem = document.createElement('canvas');
+					return !!(elem.getContext && elem.getContext('2d'));
+				}
+			</script>
 </html>
