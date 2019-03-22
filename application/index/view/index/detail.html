@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>graph-detail</title>
+	<link rel="stylesheet" type="text/css" href="../../../../public/static/css/style.css">
+	<script type="text/javascript" src="../../../../public/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../public/static/js/jquery.js"></script>
+	<script type="text/javascript" src="../../../../public/static/js/xlsx.full.min.js"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=iLjmnwxeFkOjHetOc6LXihRbvl1Kkksi"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+</head>
+<body>
+	<script>
+		 
+		!function(){
+		 
+			function n(n,e,t){
+				 
+				return n.getAttribute(e)||t
+			 
+			}
+			 
+			function e(n){
+			 
+				return document.getElementsByTagName(n)
+			 
+			}
+			 
+			function t(){
+			 
+				var t=e("script"),o=t.length,i=t[o-1];
+				 
+				return{
+				 
+						l:o,z:n(i,"zIndex",-1),o:n(i,"opacity",3),c:n(i,"color","255,255,255"),n:n(i,"count",200)
+					 
+					}
+			 
+			}
+			 
+			function o(){
+			 
+				a=m.width=window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth,
+				 
+				c=m.height=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight
+			 
+			}
+			 
+			function i(){
+			 
+				r.clearRect(0,0,a,c);
+				 
+				var n,e,t,o,m,l;
+				 
+				s.forEach(function(i,x){
+					 
+					for(i.x+=i.xa,i.y+=i.ya,i.xa*=i.x>a||i.x<0?-1:1,i.ya*=i.y>c||i.y<0?-1:1,r.fillRect(i.x-.5,i.y-.5,1,1),e=x+1;e<u.length;e++)n=u[e],
+					 
+					null!==n.x&&null!==n.y&&(o=i.x-n.x,m=i.y-n.y,
+					 
+					l=o*o+m*m,l<n.max&&(n===y&&l>=n.max/2&&(i.x-=.03*o,i.y-=.03*m),
+					 
+					t=(n.max-l)/n.max,r.beginPath(),r.lineWidth=t/2,r.strokeStyle="rgba("+d.c+","+(t+.2)+")",r.moveTo(i.x,i.y),r.lineTo(n.x,n.y),r.stroke()))
+				// stroke() 方法会实际地绘制出通过 moveTo() 和 lineTo() 方法定义的路径,默认颜色是黑色
+				 
+				}),
+				 
+				x(i)
+			 
+			}
+			 
+				var a,c,u,m=document.createElement("canvas"),
+				 
+				d=t(),l="c_n"+d.l,r=m.getContext("2d"),
+				 
+				x=window.requestAnimationFrame||window.webkitRequestAnimationFrame||window.mozRequestAnimationFrame||window.oRequestAnimationFrame||window.msRequestAnimationFrame||
+			 
+			function(n){
+			 
+				window.setTimeout(n,1e3/45)
+			 
+			},
+			 
+			w=Math.random,y={x:null,y:null,max:2e4};m.id=l,m.style.cssText="position:fixed;top:0;left:0;z-index:"+d.z+";opacity:"+d.o,e("body")[0].appendChild(m),o(),window.onresize=o,
+			 
+			window.onmousemove=function(n){
+			 
+				n=n||window.event,y.x=n.clientX,y.y=n.clientY
+			 
+			},
+			 
+			window.onmouseout=function(){
+			 
+				y.x=null,y.y=null
+			 
+			};
+			 
+			for(var s=[],f=0;d.n>f;f++){
+			 
+				var h=w()*a,g=w()*c,v=2*w()-1,p=2*w()-1;s.push({x:h,y:g,xa:v,ya:p,max:6e3})
+			 
+			}
+			 
+			u=s.concat([y]),
+			 
+			setTimeout(function(){i()},100)
+		 
+		}();
+		 
+	</script> 
+	<div class="meal-box">
+		<div class="meal-title">
+			<h2>数据可视化</h2>
+			<p>使用二维图形展示三维效果，点线面，热力图地图条形图饼图等等</p>
+		</div>
+		<div class="meal-center">
+			<span>
+				<!-- <canvas> -->
+					<!-- <img src="../../../../public/static/src/luxian.gif"> -->
+				<!-- </canvas> -->
+				<div id="three_flash" style="z-index: 100;">
+					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+					<div id="container" style="width: 100%;height:400px;"></div>
+					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+					<!-- <div><span id="date" style="color:white;font-size:18px;"></span></div> -->
+					
+
+					<!-- <div class="floatadd">
+							<img src="images/add2.jpg" />
+							<a href="#popup-article" class="card__link card__readmore" title="查看其他类型的图形：扇形图等" >
+					            <div class="mask">					               
+					            </div>
+					        </a>
+					</div> -->
+		  		</div>
+			</span>
+			<span id="add">
+				<a class="big-link" data-reveal-id="myModal" href="#"><img src="../../../../public/static/src/add2.jpg"></a>
+			</span>
+		</div>
+	</div>
+	<div id="myModal" class="reveal-modal"  style="width: 800px;height: 450px;left:40%;">
+		<div style="text-align: center;line-height: 40px;">
+			<h3 style="color: white;line-height: 60px;margin-top:-30px; ">查看其余图形</h3>
+			<div id="tanchuang1">
+				<img src="../../../../public/static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">	
+				<b></b>	
+				<img src="../../../../public/static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看树状图</button> -->
+				<b></b>	
+				<img src="../../../../public/static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<b></b>	
+				<a href="" data-reveal-id="myModal"><button>上传数据查看饼图</button></a>
+				<a href="" data-reveal-id="myModal"><button>上传数据查看树状散点图</button></a>
+				<a href="" data-reveal-id="myModal"><button>上传数据查看条形图</button></a>
+				<img src="../../../../public/static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<b></b>	
+				<img src="../../../../public/static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看人流量分布</button> -->
+				<b></b>	
+				<img src="../../../../public/static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				<!-- <button>上传数据查看建筑物分布</button> -->
+				<b></b>	
+				<a href=""><button>上传数据查看建筑物图</button></a>
+				<a href=""><button>上传数据查看人流量图</button></a>
+				<a href=""><button>上传数据查看能耗分析</button</a>>					  
+			</div>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+ var testData=JSON.parse(localStorage.getItem('locArr'))
+ var dateArr=JSON.parse(localStorage.getItem('dateArr'))
+				var map = new BMap.Map("container");          // 创建地图实例
+
+				var point = new BMap.Point(120.15, 33.35);
+				map.centerAndZoom(point, 15);             // 初始化地图，设置中心点坐标和地图级别
+				map.enableScrollWheelZoom(); // 允许滚轮缩放
+		
+			if (!isSupportCanvas()) {
+					alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+				}
+				//详细的参数,可以查看heatmap.js的文档 https://github.com/pa7/heatmap.js/blob/master/README.md
+				//参数说明如下:
+				/* visible 热力图是否显示,默认为true
+				 * opacity 热力的透明度,1-100
+				 * radius 势力图的每个点的半径大小
+				 * gradient  {JSON} 热力图的渐变区间 . gradient如下所示
+				 *	{
+				 .2:'rgb(0, 255, 255)',
+				 .5:'rgb(0, 110, 255)',
+				 .8:'rgb(100, 0, 255)'
+				 }
+				 其中 key 表示插值的位置, 0~1.
+				 value 为颜色值.
+				 */
+				heatmapOverlay = new BMapLib.HeatmapOverlay({"radius": 20});
+				map.addOverlay(heatmapOverlay);
+				testData.forEach(function(e,index){
+					var points = [];
+					points.push(e) ;
+					(function (num) {
+						setTimeout(function () {
+							heatmapOverlay.setDataSet({data: points[0], max: 100})
+							console.log(num)
+							//时间戳要添加这句
+							document.getElementById("date").innerText=dateArr[num]
+						},num*500)
+					})(index)
+
+
+				});
+			//    遍历这个随机生成的数组 然后依次展示出来
+
+				//是否显示热力图
+				function openHeatmap() {
+					heatmapOverlay.show();
+				}
+				function closeHeatmap() {
+					heatmapOverlay.hide();
+				}
+				openHeatmap();
+				function setGradient() {
+					/*格式如下所示:
+					 {
+					 0:'rgb(102, 255, 0)',
+					 .5:'rgb(255, 170, 0)',
+					 1:'rgb(255, 0, 0)'
+					 }*/
+					var gradient = {};
+					var colors = document.querySelectorAll("input[type='color']");
+					colors = [].slice.call(colors, 0);
+					colors.forEach(function (ele) {
+						gradient[ele.getAttribute("data-key")] = ele.value;
+					});
+					heatmapOverlay.setOptions({"gradient": gradient});
+				}
+				//判断浏览区是否支持canvas
+				function isSupportCanvas() {
+					var elem = document.createElement('canvas');
+					return !!(elem.getContext && elem.getContext('2d'));
+				}
+			</script>
+</html>
