@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="../../../../public/static/css/style.css">
 	<link rel="stylesheet" type="text/css" href="../../../../public/static/css/fonts.css">
 	<script type="text/javascript" src="../../../../public/static/js/jquery.min.js"></script>
+	<script type="text/javascript" src="../../../../public/static/js/echarts.min.js"></script>
 	<script type="text/javascript" src="../../../../public/static/js/jquery.js"></script>
 	<script type="text/javascript" src="../../../../../public/static/js/xlsx.full.min.js"></script>
 </head>
@@ -184,12 +185,14 @@
 	<div id="myModal" class="reveal-modal">
 			<div class="message">
 				<form method="post" action="" enctype="multipart/form-data">					
-					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传数据" size="30" onClick="f.click()" class="choose">
-					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='./index/detail.html'" class="choose">
-					<input type="file" id="f" onChange="txt.value=this.value" name="f" style="height:26px;" class="finish"  size="1" hidefocus>
+					<input type="text" id="txt" name="txt" class="input" value="文件域" disabled="disabled" />
+					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传图片" size="30" onClick="f.click()" class="liulan"> -->
+					<input type="file" id="f" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
+					<!-- <button value="submit" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" onclick="location.href='detail.html'" class="button">上传完成</button> -->
+					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='detail.html'" class="choose">
+					<a class="close-reveal-modal">&#215;</a>
 				</form>
 			</div>
-			<a class="close-reveal-modal">&#215;</a>
 	</div>
 </body>
 </html>

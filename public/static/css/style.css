@@ -1,0 +1,343 @@
+*{
+	font-family: Microsoft Yahei;
+	box-sizing: border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	outline: none;
+	list-style-type:none;
+}
+html{
+	width: 100%;
+	height: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	margin:0;
+	font-size: 14px;
+	line-height: 1.75;
+	color: #282828;
+	background: url(../../../public/static/src/center-bg.jpg) no-repeat;
+ 	/*background-size: cover;*/
+}
+h1,h2,h3,h4,h5,h6{
+	padding: 0;
+	margin: 0;
+	font-weight: normal;
+}
+ul,ol,li,p,dl,dt,dd{
+	margin:0;
+	padding: 0;
+	list-style: none;
+}
+img{
+	border: none;
+	vertical-align: middle;
+}
+a{
+	text-decoration: none;
+	color: #282828;
+	transition: color .2s;
+	-moz-transition:color .2s; 
+	-ms-transition:color .2s; 
+	-o-transition:color .2s; 
+	-webkit-transition:color .2s;
+}
+a:hover{
+	color: #00c1de;
+}
+@media(max-width: 767px){
+	body{
+		font-size: 12px;
+		line-height: 1.5;
+	}
+}
+.meal-box{
+	padding: 0;
+	/*background: #f6f7fb;*/
+}
+.meal-title{
+	text-align: center;
+	background-color: rgb(0,0,0,.5);
+}
+.meal-title h2{
+	padding-top: 10px;
+	font-size: 36px;
+	color: white;
+	/*position: relative;*/
+}
+.meal-title h2:hover,
+			p:hover{
+	text-shadow: 0 4px 2px rgb(255,255,255,.5);
+}
+.meal-title p{
+	color: rgb(255,255,255,.5);
+	padding-bottom: 10px;
+}
+.meal-center{
+	width: 1080px;
+	margin: 0 auto;
+	text-align: center;
+	max-width: 100%;
+	position: relative;
+}
+.meal-center ul{
+	padding: 30px 0 60px 0;
+}
+.meal-center ul:after{
+	display: block;
+	content: '';
+	clear: both;
+}
+.meal-center ul li{
+	width: 33.33%;
+	float: left;
+	padding: 7.5px;
+	filter:alpha(opacity=30)
+	/*border: 1px solid #0696ff;*/
+	/*border:1px solid red;*/
+}
+.meal-center ul li span{
+	background: #061a32;
+	border: 1px solid #0696ff;
+	display: block;
+}
+.meal-center ul li img{
+	width: 100%;
+	display: block;
+	margin:1px auto;
+	text-align: center;
+}
+.meal-center ul li img:hover{
+	-moz-box-shadow:0px 0px 30px #fff;
+	-webkit-box-shadow:0px 0px 30px #fff;
+}
+.meal-center ul li b{
+	display: block;
+	font-weight: normal;
+	font-size: 16px;
+}
+.meal-center ul li b em{
+	background: #ff8541;
+	color: #fff;
+	display: inline-block;
+	line-height: 16px;
+	padding: 0 3px;
+	margin:0 3px;
+	font-size: 12px;
+	font-style: normal;
+}
+.meal-center ul li font{
+	display: block;
+	margin:0px 0 0 0;
+}
+.meal-center ul li font a{
+	width: 50%;
+	color: #fff;
+	background: #000;
+	font-size: 16px;
+	line-height: 40px;
+	border-bottom: 1px solid #0696ff;
+	/*box-sizing: border-box;;*/
+}
+.meal-center ul li font a:first-child{
+	float: left;
+	margin-left: -1px;
+	border: 1px solid #0696ff;
+}
+.meal-center ul li font a:first-child:hover{
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
+}
+.meal-center ul li font a:last-child{
+	float: right;
+	margin-right: -1px;
+	border: 1px solid #0696ff;
+}
+.meal-center ul li font a:last-child:hover{
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
+}
+.meal-center span{
+	width: 100%;
+	background-color: #000;
+	border: 10px solid #fff;
+	margin: 30px 0 60px 0;
+	display: block;
+	/*top: 100px;*/
+	/*text-transform: uppercase; 从下往上的动画还没做*/
+}
+.meal-center span:hover{
+	-moz-box-shadow:0px 0px 30px #fff;
+	-webkit-box-shadow:0px 0px 30px #fff;
+}
+.meal-center #add{
+	width: 90px;
+	height: 90px;
+	position: absolute;
+	right: 4%;
+	bottom: 0%;
+	border: none;
+	border-radius: 10px;
+}
+.meal-center #add img{
+	width: 100%;
+	height: 100%;
+	opacity: 0.3;
+	border-radius: 10px;
+}
+/*添加了地图之后即可删除*/
+.meal-center img{
+	width: 60%;
+	height:100%;
+}
+/*
+#jumpw{
+	visibility: hidden;
+	position: fixed;
+	z-index: 1;在最上层显示
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	display: none;
+	弹出框背景灰色蒙版
+	color: rgba(255,255,255,.5);
+	background-color: rgba(0,0,0,0.6);
+	text-align: center; 
+}
+.jumpw-content{
+	弹出框本身的背景
+	background-color: rgba(102,102,102,0.8);
+	margin:15% auto;
+	width: 60%;
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
+	animation-name: upload;
+	animation-duration: 1s;
+}
+#jumpw .jumpw-header{
+	padding: 0 auto;
+	background-color: rgba(102,102,102,.6);
+}
+.jumpw-header h1,.jumpw-footer h3{
+	margin:0;
+}
+.closew{
+	float: right;
+	font-size: 30px;
+	padding-right: 1%;
+}
+.closew:hover,.closew:focus{
+	color: rgba(255,255,255,.9);
+	cursor: pointer;
+
+}
+.jumpw-body{
+	padding: 10px 20px;
+}
+.jumpw-footer{
+	padding: 10px;
+}*/
+/*	--------------------------------------------------
+Reveal Modals
+-------------------------------------------------- */
+
+.reveal-modal-bg { 
+	position: fixed; 
+	height: 100%;
+	width: 100%;
+	background: #000;
+	background: rgba(0,0,0,.8);
+	z-index: 100;
+	display: none;
+	top: 0;
+	left: 0; 
+}
+
+.reveal-modal {
+	visibility: hidden;
+	top: 100px; 
+	left: 60%;
+	margin-left: -300px;
+	width: 360px;
+	background: #2b2b2c url() no-repeat -200px -80px;
+	position: absolute;
+	z-index: 101;
+	padding: 30px 40px 34px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
+	-box-shadow: 0 0 10px rgba(0,0,0,.4);
+}
+
+.reveal-modal.small 		{ width: 200px; margin-left: -140px;}
+.reveal-modal.medium 		{ width: 400px; margin-left: -240px;}
+.reveal-modal.large 		{ width: 600px; margin-left: -340px;}
+.reveal-modal.xlarge 		{ width: 800px; margin-left: -440px;}
+
+.reveal-modal .close-reveal-modal {
+	font-size: 22px;
+	line-height: .5;
+	position: absolute;
+	top: 8px;
+	right: 11px;
+	color: #aaa;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+	font-weight: bold;
+	cursor: pointer;
+} 
+.reveal-modal p
+{
+	font-size: 15px;
+	margin:10px auto;
+	width: 100px;
+	height: 20px;
+	color: #ffffff;
+	font-weight: bold;
+	cursor: pointer;
+	text-shadow: 0 -1px 1px rbga(0,0,0,.6);
+}
+#tanchuang1{
+	padding-top: 0px;
+}
+#tanchuang1 img{
+	line-height: 69px;
+	width: 30%;
+	height: 30%;
+}
+#tanchuang1 img:hover{
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
+}
+#tanchuang1 button{
+	display: inline;
+	width: 30%;
+	height: 26px;
+	line-height: 26px;
+}
+#tanchuang1 button:hover{
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
+}
+
+@media(max-width: 767px){
+	.meal-title{
+		padding:0 30px;
+	}
+	.meal-title h2{
+		font-size: 24px;
+	}
+}
+@keyframes upload{
+	from{
+		opacity: 0;
+	to{
+		opacity: 1;
+		background-color: red;
+	}
+	}
+}
