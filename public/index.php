@@ -11,7 +11,8 @@
 
 // [ 应用入口文件 ]
 namespace think;
-
+define('SCRIPT_DIR', 'http://127.0.0.1');
+// 获取URL访问根地址 包含域名
 // 加载基础文件
 require __DIR__ . '/../thinkphp/base.php';
 
