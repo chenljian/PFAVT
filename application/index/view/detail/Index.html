@@ -116,39 +116,30 @@
 			<p>使用二维图形展示三维效果，点线面，热力图地图条形图饼图等等</p>
 		</div>
 		<div class="meal-center">
-			<span>
-				<!-- <canvas> -->
-					<!-- <img src="../../../../public/static/src/luxian.gif"> -->
-				<!-- </canvas> -->
-				<div id="three_flash" style="z-index: 100;">
-					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-					<div id="container" style="width: 100%;height:400px;"></div>
-					<!-- 为ECharts准备一个具备大小（宽高）的Dom -->					
 
-					<!-- <div class="floatadd">
-							<img src="images/add2.jpg" />
-							<a href="#popup-article" class="card__link card__readmore" title="查看其他类型的图形：扇形图等" >
-					            <div class="mask">					               
-					            </div>
-					        </a>
-					</div> -->
+				<div id="three_flash" style="width:100%;height:500px;position:relative;float:left;background-color: pink;margin: 0;float: left;">
+					<!-- 显示地图的div -->
+					<div id="container" style="width: 50%;height:400px;position:absolute;background-color: red;margin: 10px 0 0 5%;"></div>	
+					<div style="width: 30%;height:400px;background-color: blue;display:inline; position:absolute;margin:10px 0 0 0;overflow: hidden;">
+						<span style="display:inline;background-color: black">2222</span>
+						<span style="display:inline;background-color: yellow;">4444</span>
+					</div>				
 		  		</div>
-			</span>
-			<span id="add">
+			<!-- <span id="add">
 				<a class="big-link" data-reveal-id="myModal" href="#"><img src="../../static/src/add2.jpg"></a>
-			</span>
-			<span id="date" style="color:white;font-size:18px;height: 30px;width:30%;align:center;display: block;top: 10px;margin: -50px 0 0px 36%;border: none;">
-		 	</span>
+			</span> -->
+	<!-- 		<span id="date" style="color:white;font-size:18px;height: 30px;width:30%;align:center;display: block;top: 10px;margin: -50px 0 0px 36%;border: none;">
+		 	</span> -->
 		</div>
 	</div>
-	<div id="myModal" class="reveal-modal"  style="width: 800px;height: 450px;left:40%;">
+	<!-- <div id="myModal" class="reveal-modal"  style="width: 800px;height: 450px;left:40%;">
 		<div style="text-align: center;line-height: 40px;">
 			<h3 style="color: white;line-height: 60px;margin-top:-30px; ">查看其余图形</h3>
 			<div id="tanchuang1">
 				<img src="../../static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">	
 				<b></b>	
 				<img src="../../static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
-				<!-- <button>上传数据查看树状图</button> -->
+				
 				<b></b>	
 				<img src="../../static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
 				<b></b>	
@@ -158,10 +149,10 @@
 				<img src="../../static/src/bingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
 				<b></b>	
 				<img src="../../static/src/sandiantu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
-				<!-- <button>上传数据查看人流量分布</button> -->
+				
 				<b></b>	
-				<img src="../../static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
-				<!-- <button>上传数据查看建筑物分布</button> -->
+				<img src="./static/src/zhuxingtu.PNG" class="pg" title="热力图是以特殊高亮的形式显示访客热衷的页面区域和访客所在的地理区域的图示。热力图 可以显示不可点击区域发生的事情。城市热力图该检测方式只提供参考。">
+				
 				<b></b>	
 				<a href=""><button>上传数据查看建筑物图</button></a>
 				<a href=""><button>上传数据查看人流量图</button></a>
@@ -169,7 +160,7 @@
 			</div>
 			<a class="close-reveal-modal">&#215;</a>
 		</div>
-	</div>
+	</div> -->
 </body>
 <script type="text/javascript">
  var testData=JSON.parse(localStorage.getItem('locArr'))
