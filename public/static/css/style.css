@@ -67,7 +67,8 @@ a:hover{
 	/*position: relative;*/
 }
 .meal-title h2:hover,
-			p:hover{
+			p:hover,
+			b:hover{
 	text-shadow: 0 4px 2px rgb(255,255,255,.5);
 }
 .meal-title p{
@@ -115,12 +116,14 @@ a:hover{
 	margin:1px auto;
 	text-align: center;
 }
-.meal-center ul li img:hover{
+/*.meal-center ul li img:hover{
 	-moz-box-shadow:0px 0px 30px #fff;
 	-webkit-box-shadow:0px 0px 30px #fff;
-}
+}*/
 .meal-center ul li b{
+	color: white;
 	display: block;
+	text-align: center;
 	font-weight: normal;
 	font-size: 16px;
 }
@@ -139,7 +142,7 @@ a:hover{
 	margin:0px 0 0 0;
 }
 .meal-center ul li font a{
-	width: 50%;
+	width: 100%;
 	color: #fff;
 	background: #000;
 	font-size: 16px;
@@ -147,12 +150,16 @@ a:hover{
 	border-bottom: 1px solid #0696ff;
 	/*box-sizing: border-box;;*/
 }
-.meal-center ul li font a:first-child{
+/*.meal-center ul li font a:first-child{
 	float: left;
 	margin-left: -1px;
 	border: 1px solid #0696ff;
+}*/
+.meal-center ul li font a:hover{
+	-moz-box-shadow:0px 0px 20px #fff;
+	-webkit-box-shadow:0px 0px 20px #fff;
 }
-.meal-center ul li font a:first-child:hover{
+/*.meal-center ul li font a:first-child:hover{
 	-moz-box-shadow:0px 0px 20px #fff;
 	-webkit-box-shadow:0px 0px 20px #fff;
 }
@@ -164,8 +171,8 @@ a:hover{
 .meal-center ul li font a:last-child:hover{
 	-moz-box-shadow:0px 0px 20px #fff;
 	-webkit-box-shadow:0px 0px 20px #fff;
-}
-.meal-center span{
+}*/
+.meal-center li span{
 	width: 100%;
 	background-color: #000;
 	border: 10px solid #fff;
@@ -174,7 +181,7 @@ a:hover{
 	/*top: 100px;*/
 	/*text-transform: uppercase; 从下往上的动画还没做*/
 }
-.meal-center span:hover{
+.meal-center  li span:hover{
 	-moz-box-shadow:0px 0px 30px #fff;
 	-webkit-box-shadow:0px 0px 30px #fff;
 }
@@ -198,7 +205,44 @@ a:hover{
 	width: 60%;
 	height:400px;
 }
-
+.meal-center #three_flash{
+	margin-top: 10px;
+}
+.meal-center #three_flash span{
+	display:inline;
+	width: 230px;
+	height: auto;
+}
+.meal-center #three_flash span img{
+	width: 260px;
+	height: 260px;
+	border: 3px solid rgb(6, 150, 255);
+}
+.meal-center #three_flash span img:hover{
+	-moz-box-shadow:0px 0px 30px #fff;
+	-webkit-box-shadow:0px 0px 30px #fff;
+}
+.meal-center #three_flash #container{
+	width: 55%;
+	height:550px;
+	position:absolute;
+	border: 13px solid #000;
+	background-color: red;
+	top: 10px;
+	left: 10%;
+	border: 1px solid #0696ff;
+}
+.meal-center #three_flash #showtype{
+	width: 55%;
+	height:550px;
+	position:absolute;
+	top: 10px;
+	left: 56%;
+}
+.meal-center #container:hover{
+	-moz-box-shadow:0px 0px 30px #fff;
+	-webkit-box-shadow:0px 0px 30px #fff;
+}
 /*
 #jumpw{
 	visibility: hidden;
@@ -312,11 +356,11 @@ Reveal Modals
 #tanchuang1{
 	padding-top: 0px;
 }
-#tanchuang1 img{
+/*#tanchuang1 img{
 	line-height: 69px;
 	width: 30%;
 	height: 30%;
-}
+}*/
 #tanchuang1 img:hover{
 	-moz-box-shadow:0px 0px 20px #fff;
 	-webkit-box-shadow:0px 0px 20px #fff;
