@@ -226,7 +226,7 @@ a:hover{
 .meal-center #three_flash span img{
   width: 260px;
   height: 260px;
-  border: 3px solid rgb(6, 150, 255);
+  border: 1px solid rgb(6, 150, 255);
 }
 .meal-center #three_flash span img:hover{
   -moz-box-shadow:0px 0px 30px #fff;
@@ -243,11 +243,11 @@ a:hover{
   border: 1px solid #0696ff;
 }
 .meal-center #three_flash #showtype{
-  width: 55%;
+  width: 100%;
   height:550px;
   position:absolute;
   top: 10px;
-  left: 56%;
+  right:10%;
 }
 .meal-center #container:hover{
   -moz-box-shadow:0px 0px 30px #fff;
