@@ -5,7 +5,21 @@ use think\Controller;
 
 class Detail extends Controller
 {
-    public function index()
+    public function index1()
+    {
+        return $this->fetch();
+        // dump(Request::url());
+
+    }
+    
+    public function index2()
+    {
+        return $this->fetch();
+        // dump(Request::url());
+
+    }
+    
+    public function index3()
     {
         return $this->fetch();
         // dump(Request::url());

@@ -127,7 +127,7 @@
 			              <font style="background-color: black;">
 			              <!-- <a href="#" class="big-link" data-reveal-id="myModal" data-animation="fade">查看详情</a> -->
 			              <!-- <a href="#">查看详情</a> -->
-			              <a class="big-link"  data-reveal-id="myModal" href="#">上传数据</a>
+			              <a class="big-link"  data-reveal-id="myModal1" href="#">上传数据</a>
 			              </font>
 			              <hr style="opacity: 0;" />
 					</span>
@@ -141,7 +141,7 @@
 						  <b></b>
 			              <hr style="opacity: 0.1;" />
 						  <font>
-							<a class="big-link" data-reveal-id="myModal" href="#">上传数据</a>
+							<a class="big-link" data-reveal-id="myModal2" href="#">上传数据</a>
 						  </font>
 						  <hr style="opacity: 0;" />
 					</span>
@@ -155,7 +155,7 @@
 						  <b></b>
 			              <hr style="opacity: 0.1;" />
 						  <font>
-							<a class="big-link"  data-reveal-id="myModal" href="#">上传数据</a>
+							<a class="big-link"  data-reveal-id="myModal3" href="#">上传数据</a>
 						  </font> 
 						  <hr style="opacity: 0;" />
 					</span>
@@ -195,14 +195,38 @@
 		</div>
 
 	</div>
-	<div id="myModal" class="reveal-modal">
+	<div id="myModal1" class="reveal-modal">
 			<div class="message">
 				<form method="post" action="" enctype="multipart/form-data">					
 					<input type="text" id="txt" name="txt" class="input" value="文件域" disabled="disabled" />
 					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传图片" size="30" onClick="f.click()" class="liulan"> -->
-					<input type="file" id="excel-file" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
+					<input type="file" id="excel-file1" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
 					<!-- <button value="submit" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" onclick="location.href='detail.html'" class="button">上传完成</button> -->
-					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='index/detail/index.html'" class="choose">
+					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='index/detail/index1.html'" class="choose">
+					<a class="close-reveal-modal">&#215;</a>
+				</form>
+			</div>
+	</div>
+	<div id="myModal2" class="reveal-modal">
+			<div class="message">
+				<form method="post" action="" enctype="multipart/form-data">					
+					<input type="text" id="txt" name="txt" class="input" value="文件域" disabled="disabled" />
+					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传图片" size="30" onClick="f.click()" class="liulan"> -->
+					<input type="file" id="excel-file1" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
+					<!-- <button value="submit" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" onclick="location.href='detail.html'" class="button">上传完成</button> -->
+					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='index/detail/index2.html'" class="choose">
+					<a class="close-reveal-modal">&#215;</a>
+				</form>
+			</div>
+	</div>
+	<div id="myModal3" class="reveal-modal">
+			<div class="message">
+				<form method="post" action="" enctype="multipart/form-data">					
+					<input type="text" id="txt" name="txt" class="input" value="文件域" disabled="disabled" />
+					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传图片" size="30" onClick="f.click()" class="liulan"> -->
+					<input type="file" id="excel-file3" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
+					<!-- <button value="submit" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" onclick="location.href='detail.html'" class="button">上传完成</button> -->
+					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='index/detail/index3.html'" class="choose">
 					<a class="close-reveal-modal">&#215;</a>
 				</form>
 			</div>
@@ -213,7 +237,64 @@
     var fileDateArr=[]   //这个就是时间数组
     var fileLocArr=[]   //这是整理后用来渲染热力图的数据
 
-    $('#excel-file').change(function(e) {
+    $('#excel-file3').change(function(e) {
+        var files = e.target.files;
+        var fileReader = new FileReader();
+        fileReader.onload = function(ev) {
+            try {
+                var data = ev.target.result,
+                    workbook = XLSX.read(data, {
+                        type: 'binary'}),
+                    persons = []; // 存储获取到的数据
+            } catch (e) {
+                console.log('文件类型不正确');
+                return;
+            }
+
+            // 表格的表格范围，可用于判断表头是否数量是否正确
+            var fromTo = '';
+            // 遍历每张表读取
+            for (var sheet in workbook.Sheets) {
+                if (workbook.Sheets.hasOwnProperty(sheet)) {
+                    fromTo = workbook.Sheets[sheet]['!ref'];
+                    console.log(fromTo);
+                    persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                   break;
+                }
+            }
+			
+			
+            fileReadData=persons;
+            var fileLocItem=[];
+            fileReadData.forEach(function (e,index) {
+                var baseItem={"lng":e.lng,"lat":e.lat,"count":e.count};
+                if(index===0){
+                    fileLocItem.push(baseItem)
+                    fileDateArr.push(new Date(1900, 0, e.time-1).toLocaleString())
+                }else {
+                    if(e.time===fileReadData[index-1].time){
+                        fileLocItem.push(baseItem)
+                    }else{
+                        fileDateArr.push(new Date(1900, 0, e.time-1).toLocaleString())
+                        fileLocArr.push(fileLocItem)
+                        fileLocItem=[]
+                        fileLocItem.push(baseItem)
+                    }
+                }
+            })//处理所读excel数据
+
+			var locStr=JSON.stringify(fileLocArr)
+			var dateStr=JSON.stringify(fileDateArr)
+            localStorage.setItem('locArr',locStr)
+		    localStorage.setItem('dateArr',dateStr)
+		console.log(localStorage.getItem('locArr'))
+		console.log(localStorage.getItem('dateArr'))
+
+        };
+        fileReader.readAsBinaryString(files[0]);
+    });
+	
+	$('#excel-file1').change(function(e) {
         var files = e.target.files;
         var fileReader = new FileReader();
         fileReader.onload = function(ev) {
@@ -240,32 +321,24 @@
             }
             fileReadData=persons;
             var fileLocItem=[];
-            fileReadData.forEach(function (e,index) {
-                var baseItem={"lng":e.lng,"lat":e.lat,"count":e.count};
-                if(index===0){
-                    fileLocItem.push(baseItem)
-                    fileDateArr.push(new Date(1900, 0, e.time-1).toLocaleString())
-                }else {
-                    if(e.time===fileReadData[index-1].time){
-                        fileLocItem.push(baseItem)
-                    }else{
-                        fileDateArr.push(new Date(1900, 0, e.time-1).toLocaleString())
-                        fileLocArr.push(fileLocItem)
-                        fileLocItem=[]
-                        fileLocItem.push(baseItem)
-                    }
-                }
+			
+            fileReadData.forEach(function (e) {
+                var fileLocItem={"lng":e.lng,"lat":e.lat,"count":e.count};
+				fileLocArr.push(fileLocItem)
+			
             })//处理所读excel数据
 
 			var locStr=JSON.stringify(fileLocArr)
-			var dateStr=JSON.stringify(fileDateArr)
+			
+			//var dateStr=JSON.stringify(fileDateArr)
         localStorage.setItem('locArr',locStr)
-		localStorage.setItem('dateArr',dateStr)
-console.log(localStorage.getItem('locArr'))
-console.log(localStorage.getItem('dateArr'))
+		//localStorage.setItem('dateArr',dateStr)
+		console.log(localStorage.getItem('locArr'))
+		//console.log(localStorage.getItem('dateArr'))
 
         };
         fileReader.readAsBinaryString(files[0]);
     });
+	
 	</script>
 </html>
