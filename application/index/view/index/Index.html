@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="./static/css/style.css">
 	<link rel="stylesheet" type="text/css" href="./static/css/fonts.css">
 	<script type="text/javascript" src="./static/js/jquery.min.js"></script>
-	<script type="text/javascript" src="./static/js/echarts.min.js"></script>
+	<script type="text/javascript" src="./static/js/echarts.js"></script>
 	<script type="text/javascript" src="./static/js/jquery.js"></script>
 	<script type="text/javascript" src="./static/js/xlsx.full.min.js"></script>
 </head>
@@ -212,7 +212,7 @@
 				<form method="post" action="" enctype="multipart/form-data">					
 					<input type="text" id="txt" name="txt" class="input" value="文件域" disabled="disabled" />
 					<!-- <input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传图片" size="30" onClick="f.click()" class="liulan"> -->
-					<input type="file" id="excel-file1" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
+					<input type="file" id="excel-file2" onChange="txt.value=this.value" value="test" name="f" style="height:26px;width: 100px;" class="liulan"  size="1" hidefocus>
 					<!-- <button value="submit" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" onclick="location.href='detail.html'" class="button">上传完成</button> -->
 					<input type="button" onMouseMove="f.style.pixelLeft=event.x-60;f.style.pixelTop=this.offsetTop;" value="上传完成" size="30" onclick="location.href='index/detail/index2.html'" class="choose">
 					<a class="close-reveal-modal">&#215;</a>
@@ -236,6 +236,7 @@
     var fileReadData=[]  
     var fileDateArr=[]   //这个就是时间数组
     var fileLocArr=[]   //这是整理后用来渲染热力图的数据
+	var fileRouteArr=[] 
 
     $('#excel-file3').change(function(e) {
         var files = e.target.files;
@@ -335,6 +336,53 @@
 		//localStorage.setItem('dateArr',dateStr)
 		console.log(localStorage.getItem('locArr'))
 		//console.log(localStorage.getItem('dateArr'))
+
+        };
+        fileReader.readAsBinaryString(files[0]);
+    });
+	
+	$('#excel-file2').change(function(e) {
+        var files = e.target.files;
+        var fileReader = new FileReader();
+        fileReader.onload = function(ev) {
+            try {
+                var data = ev.target.result,
+                    workbook = XLSX.read(data, {
+                        type: 'binary'}),
+                    persons = []; // 存储获取到的数据
+            } catch (e) {
+                console.log('文件类型不正确');
+                return;
+            }
+
+            // 表格的表格范围，可用于判断表头是否数量是否正确
+            var fromTo = '';
+            // 遍历每张表读取
+            for (var sheet in workbook.Sheets) {
+                if (workbook.Sheets.hasOwnProperty(sheet)) {
+                    fromTo = workbook.Sheets[sheet]['!ref'];
+                    console.log(fromTo);
+                    persons = persons.concat(XLSX.utils.sheet_to_json(workbook.Sheets[sheet]));
+                   break;
+                }
+            }
+			//console.log(persons);
+            fileReadData=persons;
+ 
+            fileReadData.forEach(function (e) {
+                var fileRouteItem={"fromName":e.fromName,"toName":e.toName,"coords":[[e.coords1,e.coords2],[e.coords3,e.coords4]]};
+				fileRouteArr.push(fileRouteItem)
+				//console.log(fileRouteItem);
+				//console.log(fileRouteArr);
+			
+            })//处理所读excel数据
+
+			var routeStr=JSON.stringify(fileRouteArr)
+
+        localStorage.setItem('routeArr',routeStr)
+
+		console.log(localStorage.getItem('routeArr'))
+
 
         };
         fileReader.readAsBinaryString(files[0]);

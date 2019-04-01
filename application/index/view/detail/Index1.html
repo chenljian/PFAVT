@@ -157,7 +157,7 @@
 	</div>
 </body>
 <script type="text/javascript">
- var testData=JSON.parse(localStorage.getItem('locArr'))
+ var points=JSON.parse(localStorage.getItem('locArr'))
  //var dateArr=JSON.parse(localStorage.getItem('dateArr'))
 				var map = new BMap.Map("container");          // 创建地图实例
 
@@ -1692,10 +1692,7 @@ map.setMapStyleV2({styleJson:styleJson});
 				heatmapOverlay = new BMapLib.HeatmapOverlay({"radius": 20});
 				map.addOverlay(heatmapOverlay);
 
-				var points = [];
-				testData.forEach(function(e){					
-					points.push(e) ;									
-				});
+			
 				heatmapOverlay.setDataSet({data: points, max: 100})
 
 				
